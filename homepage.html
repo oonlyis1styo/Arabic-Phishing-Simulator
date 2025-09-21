@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محاكي التصيّد العربي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Changa', sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #071b2e;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .header {
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .header h1 {
+      color:  #2563eb;
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      text-shadow: 3px 3px 0 #000;
+      letter-spacing: 1px;
+    }
+
+    .header h1::after {
+      content: "محاكي التصيد العربي";
+      display: block;
+      font-size: 2.8rem;
+      color: #2563eb;
+      margin-top: 5px;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+      color: #071b2e;
+    }
+
+    .game-description {
+      background: #0f172a;
+      padding: 25px;
+      border-radius: 15px;
+      margin: 30px 0;
+      color: #ffffff;
+    }
+
+    .game-description h2 {
+      color:#1d4ed8;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .game-description p {
+      line-height: 1.7;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    .features {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 30px 0;
+      gap: 20px;
+    }
+
+    .feature {
+      background: #0f172a;
+      padding: 20px;
+      border-radius: 10px;
+      width: 250px;
+      border: 1px solid rgba(255, 206, 48, 0.3);
+      color: #ffff;
+    }
+
+    .feature h3 {
+      color: #1d4ed8;
+      margin-bottom: 10px;
+    }
+
+    .buttons-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 18px 35px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      min-width: 220px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-play {
+      background: linear-gradient(to right,  #96c93d,#00b09b);
+      color: #ffffff;
+    }
+
+    .btn-learn {
+      background: linear-gradient(to right, #00b09b, #96c93d);
+      color: #ffffff;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .decoration {
+      position: absolute;
+      font-size: 8rem;
+      opacity: 0.08;
+      z-index: -1;
+      color: #071b2e;
+    }
+
+    .dec-1 {
+      top: -50px;
+      left: 50px;
+      transform: rotate(-30deg);
+    }
+
+    .dec-2 {
+      bottom: -30px;
+      right: 70px;
+      transform: rotate(20deg);
+    }
+
+    .footer {
+      margin-top: 50px;
+      color: #071b2e;
+      font-size: 0.9rem;
+    }
+
+    /* Overlay explanation screen */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(7, 27, 46, 0.97);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      text-align: center;
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .overlay .content {
+      max-width: 700px;
+      background: #222;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .overlay h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color:#2563eb;
+    }
+
+    .overlay p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .btn-ready {
+      background: linear-gradient(to right, #00b09b, #96c93d);
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-ready:hover {
+      background: linear-gradient(to right, #009680, #78b92d);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="decoration dec-1">⛵</div>
+      <h1></h1>
+      <p>اختبر مهاراتك في الأمن السيبراني جوّه عالم رقمي واقعي من مصر</p>
+      <div class="decoration dec-2">🧩</div>
+    </div>
+
+    <div class="game-description">
+      <h2>أهلا بيك في التحدي الأكبر للأمن السيبراني</h2>
+      <p>عيش تجربة محاكاة واقعية هتعلّمك إزاي تميّز وتتجنّب هجمات التصيّد بالعربي. اللعبة التعليمية دي هتساعدك تلاحظ الأساليب اللي الهاكرز بيستخدموها في المساحة الرقمية بالشرق الأوسط.</p>
+      <p>اتعلّم إزاي تكتشف الإيميلات والرسائل والمواقع المشبوهة وإنت بتتعرّض لسيناريوهات حقيقية بيقابلها مستخدمين الإنترنت الناطقين بالعربية.</p>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <h3>سيناريوهات واقعية</h3>
+        <p>مبنية على محاولات تصيّد حقيقية اتسجّلت في مناطق عربية</p>
+      </div>
+      <div class="feature">
+        <h3>محتوى تعليمي</h3>
+        <p>هتتعلّم إزاي تلاحظ العلامات الصغيرة اللي بتكشف التصيّد</p>
+      </div>
+      <div class="feature">
+        <h3>سياق ثقافي</h3>
+        <p>افهم إزاي التصيّد بيتكيّف مع العادات وأسلوب التواصل المحلي</p>
+      </div>
+    </div>
+
+    <div class="buttons-container">
+      <button class="btn btn-play" onclick="showOverlay()">
+        <span>🎮</span> ابدأ اللعبة
+      </button>
+
+      <button class="btn btn-learn" onclick="location.href='learnmore.html'">
+        <span>📚</span>اعرف أكتر
+      </button>
+    </div>
+
+    <div class="footer">
+      <p>© محاكي التصيّد العربي — لأغراض تعليمية فقط</p>
+    </div>
+  </div>
+
+  <!-- Overlay Screen -->
+  <div id="overlay" class="overlay">
+    <div class="content">
+      <h2>شرح اللعبة</h2>
+      <p>.هيظهرلك شوية رسائل، ممكن تبقى ايميل أو رسالة قصيرة أو حتى مكالمة<br>
+        .في رسايل منهم حقيقية، وفي منهم محاولات تصيّد<br>
+        .مهمتك إنك تفرّق بين الرسايل الصح والرسائل المزيفة<br>
+        .متخافش هيظهرلك بعد كل اختيار شرح تفصيلي<br>
+  🎯 .بالتوفيق 
+      </p>
+      <button class="btn-ready" onclick="startGame()"> 🚀 انا جاهز </button>
+    </div>
+  </div>
+  <script>
+    function showOverlay() {
+      document.getElementById("overlay").classList.add("active");
+    }
+
+    function startGame() {
+      window.location.href = "simulation.html";
+    }
+  </script>
+</body>
+</html>
