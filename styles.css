@@ -24,7 +24,7 @@
       justify-content:center;
       align-items:flex-start;
       gap:20px;
-     
+      opacity: 1;
       transition: opacity 0.75s ease-in;
 
       
@@ -306,5 +306,6 @@
       .message{min-height:140px}
       header h1{font-size:1.3rem}
     }
+
 
 
