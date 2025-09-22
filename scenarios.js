@@ -833,6 +833,7 @@ initRun();
 const homeBtn = $('return_to_homepage');
 if (homeBtn) homeBtn.addEventListener('click', () => { window.location.href = 'homepage.html'; });
 
-window.addEventListener('load', () => {
+// replace the existing load listener
+window.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('fade-in');
 });
