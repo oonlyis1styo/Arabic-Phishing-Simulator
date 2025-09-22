@@ -1,27 +1,10 @@
-    .btn.other.rtrn {
-      padding: 10px 20px;
-      font-size: 16px;
-       background: linear-gradient(to right, #00b09b, #96c93d); /* Green background */
-      color: #071b2e;
-              
-      border: none;
-      border-radius: 50px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      cursor: pointer;           /* Shows clickable pointer */
-    }
-
-    /* Hover effect */
-    .btn.other.rtrn:hover {
-      background-color:  #64748b; /* Darker green on hover */
-      transform: scale(1.05);    /* Slight grow on hover */
-    }
    :root{
       --bg: #f4f7fb;
       --card: #ffffff;
       --muted: #0f172a;
       --text: #0f172a;
       --primary: #2563eb;
-      --primary-600:#4d9bff;
+      --primary-600:#1d4ed8;
       --success: #16a34a;
       --danger: #ef4444;
       --glass: rgba(255,255,255,0.6);
@@ -41,6 +24,8 @@
       justify-content:center;
       align-items:flex-start;
       gap:20px;
+      opacity: 0;
+      transition: opacity 0.75s ease-in;
 
       
       background-image:
@@ -82,6 +67,10 @@
       max-width:980px;
     }
 
+    body.fade-in {
+      opacity: 1;
+    }
+
     header.app-header{
       display:flex;
       align-items:center;
@@ -92,7 +81,7 @@
       width:64px;
       height:64px;
       border-radius:14px;
-      background: linear-gradient(135deg,#2563eb,#4d9bff);
+      background: linear-gradient(135deg,#2563eb,#1d4ed8);
       box-shadow: 0 8px 28px rgba(37,99,235,0.18);
       display:flex;
       align-items:center;
@@ -239,6 +228,26 @@
       font-size:0.9rem;
       font-weight:600;
       border-radius:8px;
+    }
+
+    .btn.other.rtrn {
+      padding: 10px 20px;
+      font-size: 16px;
+      font-family: 'Cairo';
+      font-weight: bold;
+      background: linear-gradient(to right,  #a5badf,#145cc0);
+      color: #ffffff;
+              
+      border: none;
+      border-radius: 50px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor: pointer;           /* Shows clickable pointer */
+    }
+
+    /* Hover effect */
+    .btn.other.rtrn:hover {
+      background-color:  #64748b; /* Darker green on hover */
+      transform: scale(1.05);    /* Slight grow on hover */
     }
 
     /* feedback panel */
