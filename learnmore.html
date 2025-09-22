@@ -13,7 +13,7 @@
       --card: #0f172a;
       --muted: #cfd8e3;
       --accent: #2563eb;
-      --accent-dark: #4d9bff;
+      --accent-dark: #4b71d8;
       --radius: 12px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,7 +23,14 @@
       color: var(--muted);
       min-height: 100vh;
       padding: 20px;
+      opacity: 0;
+      transition: opacity 0.7s ease-in;
     }
+
+    body.fade-in {
+      opacity: 1;
+    }
+
     .wrap {
       max-width: 1000px;
       margin: 0 auto;
@@ -107,13 +114,14 @@
     }
     .btn {
       display: inline-block;
-      background: linear-gradient(to right,  #96c93d,#00b09b);
-      color: #071b2e;
+      background: linear-gradient(to right,  #a5badf,#145cc0);
+      color: #ffffff;
       padding: 10px 16px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
       margin-top: 20px;
+      margin-right: 800px;
     }
     .back-link {
       display: inline-block;
@@ -145,7 +153,7 @@
 
     <div class="card">
       <h2>يعني إيه تصيّد؟</h2>
-      <p>التصيّد ده لما حد يحاول يخدعك مسكّن رسائل أو مكالمات أو مواقع مزيفة عشان ياخد بياناتك الحساسة زي الباسورد أو أرقام البطاقات أو كود التفعيل.</p>
+      <p>التصيّد ده لما حد يحاول يخدعك عن طريق رسائل أو مكالمات أو مواقع مزيفة عشان ياخد بياناتك الحساسة زي الباسورد أو أرقام البطاقات أو كود التفعيل.</p>
 
       <h3>إيه الأذى اللي ممكن يحصل؟</h3>
       <ul>
@@ -158,13 +166,13 @@
       <ul>
         <li>رسائل SMS من أرقام شبه الأرقام الرسمية لبنكك.</li>
         <li>إيميلات بتطلب منك دخول بياناتك، أو تجديد الحساب من رابط مش رسمي.</li>
-        <li>مكالمات بيقولك فيها إنو فيه مشكلة في حسابك ولازم تبعت كود التفعيل أو صورة البطاقة.</li>
+        <li>مكالمات بيقولك فيها إن في مشكلة في حسابك ولازم تبعت كود التفعيل أو صورة البطاقة.</li>
         <li>صفحات مزيفة بتقلد البنوك أو شركات الاتصالات أو المتاجر.</li>
       </ul>
 
       <h3>إزاي تحمي نفسك؟</h3>
       <ul>
-        <li>ابص على الرابط قبل ما تضغط عليه، وشوف إذا كان الدومين الرسمي ولا لا.</li>
+        <li>بص على الرابط قبل ما تضغط عليه، وشوف إذا كان الدومين الرسمي ولا لا.</li>
         <li>متشاركش OTP أو كود التفعيل مع حد.</li>
         <li>استخدم التحقق بخطوتين (2FA) في حساباتك.</li>
         <li>خلي برامجك وتطبيقاتك مُحدثة دايمًا.</li>
@@ -179,6 +187,12 @@
       </ul>
 
       <a class="btn" href="homepage.html" style="border-radius: 50px;">◀ رجوع للرئيسية</a>
+      
+      <script>
+        window.addEventListener('load', () => {
+          document.body.classList.add('fade-in');
+        });
+      </script>
     </div>
 
     <footer>
