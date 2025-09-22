@@ -12,20 +12,30 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{
-      margin:0;
-      font-family:'Cairo', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg,#eef7ff 0%, var(--bg) 40%);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:28px;
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      gap:20px;
-      opacity: 0;
-      transition: opacity 0.75s ease-in;
+    /* --- replace your existing body rules with this block --- */
+body{
+  margin:0;
+  font-family:'Cairo', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg,#eef7ff 0%, var(--bg) 40%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:28px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  gap:20px;
+
+  /* START HIDDEN so fade-in can animate */
+  opacity: 0;
+  transition: opacity 0.75s ease-in;
+  /* keep any existing background-image rules you had after this */
+}
+
+/* shows page once JS adds this class */
+body.fade-in {
+  opacity: 1;
+}
 
       
       background-image:
@@ -65,10 +75,6 @@
     .wrap{
       width:100%;
       max-width:980px;
-    }
-
-       body.fade-in {
-      opacity: 1;
     }
 
     header.app-header{
@@ -267,7 +273,7 @@
     .feedback.bad  { background: linear-gradient(90deg, rgba(239,68,68,0.08), rgba(255,255,255,0)); border-left:6px solid var(--danger); }
     .feedback.final { background: linear-gradient(90deg, rgba(37,99,235,0.08), rgba(255,255,255,0)); border-left:6px solid var(--primary); }
 
-    @keyframes fadeIn { from {opacity:0; transform:translateY(6px)} to {opacity:1; transform:none} }
+    @keyframes fadeIn { from {opacity:1; transform:translateY(6px)} to {opacity:1; transform:none} }
 
     /* right column / stats */
     .sidebar {
@@ -308,6 +314,7 @@
       .message{min-height:140px}
       header h1{font-size:1.3rem}
     }
+
 
 
 
