@@ -314,6 +314,28 @@ body.fade-in {
       .message{min-height:140px}
       header h1{font-size:1.3rem}
     }
+   /* Fullscreen white overlay that will fade OUT (reveal underlying UI) */
+#fade-overlay {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  z-index: 9999;          /* sits above everything */
+  opacity: 1;             /* start fully opaque */
+  transition: opacity 0.75s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;   /* blocks interactions while visible */
+}
+
+/* When this class is added, the overlay fades out to reveal the UI */
+#fade-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;   /* allow interactions when faded out */
+}
+
 
 
 
