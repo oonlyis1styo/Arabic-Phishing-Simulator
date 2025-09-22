@@ -835,5 +835,8 @@ if (homeBtn) homeBtn.addEventListener('click', () => { window.location.href = 'h
 
 // replace the existing load listener
 window.addEventListener('DOMContentLoaded', () => {
-  document.body.classList.add('fade-in');
+  requestAnimationFrame(() => {
+    document.body.classList.add('fade-in');
+  });
 });
+
