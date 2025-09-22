@@ -67,9 +67,7 @@
       max-width:980px;
     }
 
-    body.fade-in {
-      opacity: 1;
-    }
+
 
     header.app-header{
       display:flex;
@@ -308,3 +306,4 @@
       .message{min-height:140px}
       header h1{font-size:1.3rem}
     }
+
