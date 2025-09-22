@@ -837,6 +837,54 @@ if (homeBtn) homeBtn.addEventListener('click', () => { window.location.href = 'h
 window.addEventListener('DOMContentLoaded', () => {
   requestAnimationFrame(() => {
     document.body.classList.add('fade-in');
+// Create a fullscreen white overlay and fade it OUT to reveal the UI underneath.
+// Works on DOMContentLoaded and uses requestAnimationFrame to ensure the transition runs.
+
+(function () {
+  function createAndFadeOverlay(durationMs = 750) {
+    // if overlay already exists, don't create another
+    if (document.getElementById('fade-overlay')) return;
+
+    const overlay = document.createElement('div');
+    overlay.id = 'fade-overlay';
+
+    // Optional: add a centered loader or logo inside the overlay:
+    // const logo = document.createElement('div');
+    // logo.textContent = 'Loading...';
+    // overlay.appendChild(logo);
+
+    document.body.appendChild(overlay);
+
+    // Force a paint so the browser registers the starting opacity (1).
+    // Then on the next frame add the class that transitions opacity -> 0.
+    requestAnimationFrame(() => {
+      // small rAF chain to be extra-safe about initial paint
+      requestAnimationFrame(() => {
+        overlay.classList.add('fade-out');
+      });
+    });
+
+    // Remove overlay from DOM after transition completes
+    const cleanup = () => {
+      if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      overlay.removeEventListener('transitionend', cleanup);
+    };
+    overlay.addEventListener('transitionend', cleanup);
+
+    // Fallback: ensure removal even if transitionend doesn't fire
+    setTimeout(cleanup, durationMs + 200);
+  }
+
+  // Wait until DOM is ready, then run the overlay fade.
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', () => createAndFadeOverlay());
+  } else {
+    // already ready
+    createAndFadeOverlay();
+  }
+})();
+
   });
 });
+
 
